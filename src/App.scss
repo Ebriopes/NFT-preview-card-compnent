@@ -1,1 +1,146 @@
-.App {}
+$main-bg: hsl(217, 54%, 11%);
+$card-bg: hsl(216, 50%, 16%);
+$line: hsl(215, 32%, 27%);
+$white: hsl(0, 0%, 100%);
+$soft-blue: hsl(215, 51%, 70%);
+$cyan: hsl(178, 100%, 50%);
+$cyan-translucid: hsl(178, 100%, 50%, 0.5);
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  background-color: $main-bg;
+
+  .card {
+    width: 17.94rem;
+    padding: 1.28rem;
+    border-radius: 1rem;
+    background-color: $card-bg;
+
+    .author,
+    .picture,
+    .properties {
+      display: flex;
+    }
+
+    .picture {
+      position: relative;
+      overflow: hidden;
+      width: 15.33rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+
+      &-main {
+        width: inherit;
+      }
+
+      &-view {
+        position: absolute;
+        opacity: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        transition: all 1s ease;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #fff0;
+        transition: all 1s ease;
+      }
+
+      &:hover {
+        .picture-view {
+          opacity: 1;
+        }
+
+        &::after {
+          background-color: $cyan-translucid;
+        }
+      }
+    }
+
+    .title {
+      font-size: 1.2rem;
+      cursor: pointer;
+
+      &:hover {
+        color: $cyan;
+      }
+    }
+
+    .description {
+      color: $soft-blue;
+      font-weight: 300;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .properties {
+      align-items: center;
+      margin: 1rem 0;
+      justify-content: space-between;
+
+      .coin,
+      .time-left {
+        display: flex;
+        align-items: center;
+        font-size: 0.8rem;
+
+        img {
+          margin-right: 0.5rem;
+        }
+      }
+
+      .coin {
+        color: $cyan;
+        font-weight: 600;
+      }
+
+      .time-left {
+        color: $soft-blue;
+      }
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid $line;
+    }
+
+    .author {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+
+      img {
+        width: 2rem;
+        margin-right: 1rem;
+        border-radius: 50%;
+        border: 1px solid $white;
+      }
+
+      &-info {
+        color: $soft-blue;
+
+        .author-name {
+          color: $white;
+          font-weight: 300;
+          cursor: pointer;
+
+          &:hover {
+            color: $cyan;
+          }
+        }
+      }
+    }
+  }
+}
